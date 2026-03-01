@@ -1,0 +1,130 @@
+/* Import CSS Variables */
+@import url('../../Variables.css');
+
+/* ================= PAGE CONTAINER ================= */
+.manage-teachers-container {
+  padding: 20px;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* ================= HEADER SECTION ================= */
+.header-section {
+  background: var(--gradient-primary);
+  border-radius: 16px;
+  padding: 30px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.header-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.header-subtitle {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* ================= TABLE CARD ================= */
+.table-card {
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  border: none;
+  overflow: hidden;
+  background: white;
+}
+
+/* ================= TABLE STYLES ================= */
+.table-custom {
+  margin-bottom: 0;
+}
+
+.table-custom thead {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.table-custom th {
+  font-weight: 600;
+  padding: 16px;
+  border: none;
+}
+
+.table-custom td {
+  padding: 16px;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-primary);
+}
+
+.table-custom tbody tr:hover {
+  background-color: var(--bg-light);
+}
+
+/* ================= ACTION BUTTONS ================= */
+.action-btn {
+  margin-right: 8px;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-btn-edit {
+  background: var(--color-info);
+  color: white;
+}
+
+.action-btn-edit:hover {
+  background: #2563eb;
+}
+
+.action-btn-delete {
+  background: var(--color-danger);
+  color: white;
+}
+
+.action-btn-delete:hover {
+  background: #dc2626;
+}
+
+/* ================= EMPTY STATE ================= */
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-muted);
+}
+
+/* ================= LOADING STATE ================= */
+.loading-state {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-muted);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .header-section {
+    padding: 20px;
+  }
+  
+  .header-title {
+    font-size: 24px;
+  }
+  
+  .table-custom th,
+  .table-custom td {
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+  
+  .action-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,368 @@
+/* Import CSS Variables */
+@import url('../../Variables.css');
+
+/* ================= SIDEBAR ================= */
+.student-sidebar {
+  width: 280px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  color: white;
+  padding: 35px 25px;
+  box-shadow: 4px 0 30px var(--shadow-tertiary);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Animated gradient overlay with shimmer */
+.student-sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(102, 126, 234, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(118, 75, 162, 0.2) 0%, transparent 50%),
+    linear-gradient(180deg, transparent 0%, rgba(102, 126, 234, 0.03) 100%);
+  pointer-events: none;
+  animation: sidebarShimmer 8s ease-in-out infinite;
+}
+
+@keyframes sidebarShimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Decorative top accent line */
+.student-sidebar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+  background-size: 200% 100%;
+  animation: gradientFlow 3s linear infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ================= LOGO ================= */
+.student-sidebar .logo {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 45px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.student-sidebar .logo::before {
+  content: '🎓';
+  font-size: 32px;
+  -webkit-text-fill-color: initial;
+  background: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Logo glow effect */
+.student-sidebar .logo::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 30px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+}
+
+/* ================= WELCOME ================= */
+.student-sidebar .welcome {
+  margin-bottom: 40px;
+  color: #9ca3af;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle inner glow */
+.student-sidebar .welcome::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.student-sidebar .welcome strong {
+  color: #ffffff;
+  font-size: 18px;
+  display: block;
+  margin-bottom: 8px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ================= NAVIGATION ================= */
+.student-sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.student-sidebar a {
+  text-decoration: none;
+  color: #d1d5db;
+  padding: 16px 20px;
+  border-radius: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  font-size: 15px;
+  border: 1px solid transparent;
+}
+
+/* Gradient background on hover */
+.student-sidebar a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: var(--gradient-primary);
+  transition: width 0.3s ease;
+  border-radius: 14px;
+  opacity: 0.15;
+}
+
+/* Icon background circle */
+.student-sidebar a span {
+  font-size: 20px;
+  position: relative;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.student-sidebar a:hover {
+  color: #ffffff;
+  transform: translateX(5px);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.student-sidebar a:hover::before {
+  width: 100%;
+}
+
+.student-sidebar a:hover span {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+}
+
+.student-sidebar a.active {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+  color: white;
+  box-shadow: 0 8px 25px var(--shadow-primary);
+  transform: translateX(5px);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.student-sidebar a.active span {
+  background: var(--gradient-primary);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* ================= ICONS FOR NAV ================= */
+.student-sidebar nav a:nth-child(1)::after { content: '🏠'; margin-left: auto; font-size: 18px; opacity: 0.7; }
+.student-sidebar nav a:nth-child(2)::after { content: '📊'; margin-left: auto; font-size: 18px; opacity: 0.7; }
+.student-sidebar nav a:nth-child(3)::after { content: '👤'; margin-left: auto; font-size: 18px; opacity: 0.7; }
+.student-sidebar nav a:nth-child(4)::after { content: '✅'; margin-left: auto; font-size: 18px; opacity: 0.7; }
+.student-sidebar nav a:nth-child(5)::after { content: '📩'; margin-left: auto; font-size: 18px; opacity: 0.7; }
+
+/* ================= LOGOUT BUTTON ================= */
+.student-sidebar .logout-btn {
+  margin-top: auto;
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  padding: 16px;
+  color: white;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Shine effect */
+.student-sidebar .logout-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease
+}
+
+ .Iconlogout-btn span {
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.student-sidebar .logout-btn:hover {
+  background: var(--gradient-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px var(--shadow-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.student-sidebar .logout-btn:hover::before {
+  left: 100%;
+}
+
+.student-sidebar .logout-btn:hover span {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1) rotate(-5deg);
+}
+
+/* ================= SIDEBAR FOOTER ================= */
+.student-sidebar .sidebar-footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.student-sidebar .sidebar-footer span {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .student-sidebar {
+    width: 90px;
+    padding: 25px 12px;
+  }
+  
+  .student-sidebar .logo {
+    font-size: 0;
+    justify-content: center;
+    padding-bottom: 15px;
+  }
+  
+  .student-sidebar .logo::before {
+    font-size: 36px;
+  }
+  
+  .student-sidebar .logo::after {
+    display: none;
+  }
+  
+  .student-sidebar .welcome {
+    display: none;
+  }
+  
+  .student-sidebar a {
+    justify-content: center;
+    padding: 16px;
+    font-size: 0;
+  }
+  
+  .student-sidebar a span {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+  }
+  
+  .student-sidebar a::after {
+    display: none;
+  }
+  
+  .student-sidebar a:hover,
+  .student-sidebar a.active {
+    transform: none;
+  }
+  
+  .student-sidebar .logout-btn {
+    padding: 16px;
+    font-size: 0;
+  }
+  
+  .student-sidebar .logout-btn span {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+  
+  .student-sidebar .sidebar-footer {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .student-sidebar {
+    display: none;
+  }
+}
