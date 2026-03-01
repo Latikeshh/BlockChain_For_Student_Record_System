@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Container, Form, Button, Row, Col, Card } from "react-bootstrap";
 import { dialog } from "../../components/CustomDialog";
 import "./AddTeacher.css";
 
@@ -9,6 +8,7 @@ export default function AddTeacher() {
     email: "",
     password: ""
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,6 +22,7 @@ export default function AddTeacher() {
       return;
     }
 
+    setLoading(true);
     try {
       const res = await fetch("http://localhost:8000/teacher/signup", {
         method: "POST",
@@ -41,90 +42,86 @@ export default function AddTeacher() {
       }
     } catch (err) {
       dialog.error("Error", "Unable to connect to server. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="add-teacher-container">
+    <div className="form-page-container">
       {/* Header */}
-      <div className="header-section">
-        <h2 className="header-title">Add New Teacher</h2>
-        <p className="header-subtitle">Create a new teacher account with access to the system</p>
+      <div className="dashboard-header">
+        <div className="header-content">
+          <h1 className="dashboard-title">Add New Teacher</h1>
+          <p className="header-subtitle">Create a new teacher account with access to the system</p>
+        </div>
       </div>
 
-      <Row>
-        <Col lg={8}>
-          <Card className="form-card">
-            <Card.Body className="form-card-body">
-              <Form onSubmit={handleSubmit}>
-                <Row>
-                  <Col md={6}>
-                    <Form.Group className="mb-3">
-                      <Form.Label className="form-label-custom">Name *</Form.Label>
-                      <Form.Control
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Enter teacher name"
-                        className="form-control-custom"
-                        required
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col md={6}>
-                    <Form.Group className="mb-3">
-                      <Form.Label className="form-label-custom">Email *</Form.Label>
-                      <Form.Control
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="Enter email address"
-                        className="form-control-custom"
-                        required
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col md={6}>
-                    <Form.Group className="mb-3">
-                      <Form.Label className="form-label-custom">Password *</Form.Label>
-                      <Form.Control
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        placeholder="Enter password"
-                        className="form-control-custom"
-                        required
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
-                <Button type="submit" className="submit-btn">
-                  ➕ Add Teacher
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col lg={4}>
-          <Card className="info-card">
-            <Card.Body className="info-card-body">
-              <h5 className="info-title">📋 Instructions</h5>
-              <p className="info-text">
-                Fill in the teacher details to create a new teacher account.
-              </p>
-              <ul className="info-list">
-                <li className="info-list-item"><strong>Name & Email</strong> are required</li>
-                <li className="info-list-item"><strong>Password</strong> for teacher login</li>
-              </ul>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+      <div className="form-content">
+        <div className="form-card">
+          <div className="form-card-body">
+            <form onSubmit={handleSubmit}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label-custom">Name *</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Enter teacher name"
+                    className="form-control-custom"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label-custom">Email *</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Enter email address"
+                    className="form-control-custom"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label-custom">Password *</label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder="Enter password"
+                    className="form-control-custom"
+                    required
+                  />
+                </div>
+              </div>
+              <button type="submit" className="submit-btn" disabled={loading}>
+                {loading ? "Adding..." : "➕ Add Teacher"}
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div className="info-card">
+          <div className="info-card-body">
+            <h5 className="info-title">📋 Instructions</h5>
+            <p className="info-text">
+              Fill in the teacher details to create a new teacher account.
+            </p>
+            <ul className="info-list">
+              <li className="info-list-item"><strong>Name & Email</strong> are required</li>
+              <li className="info-list-item"><strong>Password</strong> for teacher login</li>
+              <li className="info-list-item">Teacher can access student records after login</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
