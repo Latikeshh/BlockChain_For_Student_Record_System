@@ -5,15 +5,15 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-Latest-green?style=flat-square&logo=mongodb)](https://www.mongodb.com/)
 [![Express.js](https://img.shields.io/badge/Express.js-Latest-black?style=flat-square&logo=express)](https://expressjs.com/)
 [![JWT Auth](https://img.shields.io/badge/JWT-Authentication-orange?style=flat-square)](https://jwt.io/)
-[![AES-256 Encryption](https://img.shields.io/badge/AES--256-Encryption-red?style=flat-square)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+[![SHA-256 Encryption](https://img.shields.io/badge/AES--256-Encryption-red?style=flat-square)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 [![License MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
 > **Secure blockchain-based student profile verification system** | MERN Stack | Cryptographic Encryption | Educational Data Management | Student Records Verification
 
-A production-ready **blockchain-inspired student data management platform** combining MERN stack (MongoDB, Express, React, Node.js) with **AES-256 encryption** for immutable student record storage and verification workflows.
+A production-ready **blockchain-inspired student data management platform** combining MERN stack (MongoDB, Express, React, Node.js) with **SHA-256 encryption** for immutable student record storage and verification workflows.
 
 ## 🔑 Keywords
-`blockchain` `student-verification` `MERN-stack` `React` `Node.js` `MongoDB` `Express` `JWT-authentication` `AES-256-encryption` `educational-system` `data-integrity` `student-records` `teacher-dashboard` `form-validation` `file-upload` `REST-API` `full-stack` `academic-management`
+`blockchain` `student-verification` `MERN-stack` `React` `Node.js` `MongoDB` `Express` `JWT-authentication` `SHA-256-encryption` `educational-system` `data-integrity` `student-records` `teacher-dashboard` `form-validation` `file-upload` `REST-API` `full-stack` `academic-management`
 
 ---
 
@@ -55,7 +55,7 @@ A production-ready **blockchain-inspired student data management platform** comb
 - ✅ **Change Request System**: Students can request modifications before final verification
 - ✅ **Real-time Tracking**: Both students and teachers get instant verification status updates
 - ✅ **Audit Trail**: Complete history of all requests, approvals, and rejections
-- ✅ **Encrypted Data**: AES-256 encryption ensures sensitive student data remains secure
+- ✅ **Encrypted Data**: SHA-256 encryption ensures sensitive student data remains secure
 
 ---
 
@@ -63,7 +63,7 @@ A production-ready **blockchain-inspired student data management platform** comb
 
 This full-stack application implements a blockchain-inspired approach to storing student academic records:
 
-- 🔐 **Encrypted Storage**: Student profile data encrypted with AES-256 before storage
+- 🔐 **Encrypted Storage**: Student profile data encrypted with SHA-256 before storage
 - ⛓️ **Blockchain Blocks**: Each record stored as immutable cryptographic blocks
 - 🔒 **Profile Lock**: Once verified, records become permanent and unmodifiable
 - 👁️ **Teacher Review**: Comprehensive verification workflow with section-by-section review
@@ -132,7 +132,7 @@ The system ensures **data integrity**, prevents **unauthorized modifications**, 
 - **Mongoose**: ODM (Object Data Modeling)
 - **JWT**: JSON Web Token authentication
 - **bcryptjs**: Password hashing
-- **crypto**: Node.js encryption module (AES-256)
+- **crypto**: Node.js encryption module (SHA-256)
 - **Multer**: File upload middleware
 - **dotenv**: Environment configuration
 
@@ -402,7 +402,7 @@ BlockChain-main/
 │   │   ├── auth.js                      - JWT verification
 │   │   └── upload.js                    - Photo upload config
 │   ├── utils/
-│   │   └── blockEncryption.js           - AES-256 encryption
+│   │   └── blockEncryption.js           - SHA-256 encryption
 │   ├── app.js                           - Express server setup
 │   └── package.json
 │
@@ -439,7 +439,7 @@ BlockChain-main/
 ## 🔒 Security Features
 
 ### Encryption
-- **Algorithm**: AES-256-ECB
+- **Algorithm**: SHA-256-ECB
 - **When Applied**: On profile save, before storing in database
 - **Decryption**: Only when viewing (real-time decryption)
 - **Key Storage**: Environment variable (should use secure vault in production)
@@ -525,7 +525,7 @@ This section outlines the key benefits and trade-offs of the blockchain-inspired
 
 ### ✅ Advantages
 - **Immutable Records**: Once verified, student profiles cannot be altered, ensuring data integrity.
-- **Enhanced Security**: AES-256 encryption and JWT-based authentication protect sensitive information.
+- **Enhanced Security**: SHA-256 encryption and JWT-based authentication protect sensitive information.
 - **Transparent Workflow**: Change requests and verification feedback create a clear audit trail.
 - **Role-Based Access**: Students and teachers have distinct, secure interfaces.
 - **Real-Time Analytics**: Dashboards provide immediate insights into verification status and trends.
@@ -583,7 +583,7 @@ For discoverability, this repo is tagged with:
 - **Frontend**: React 18 single-page app, instant UI updates
 - **Backend**: Express.js with async/await
 - **Database**: MongoDB document-based queries
-- **Encryption**: AES-256 on profile save/retrieve (minimal overhead)
+- **Encryption**: SHA-256 on profile save/retrieve (minimal overhead)
 - **API Response Time**: <200ms for typical queries
 - **Scalability**: Ready for deployment on cloud platforms (Heroku, Railway, Vercel)
 
@@ -683,7 +683,7 @@ Potential features for next iterations:
 | Feature | This System | Traditional DB | Blockchain |
 |---------|------------|-----------------|-----------|
 | **Immutability** | ✅ Profile lock | ❌ Modifiable | ✅ Ledger-based |
-| **Encryption** | ✅ AES-256 | ❌ Optional | ✅ Cryptographic |
+| **Encryption** | ✅ SHA-256 | ❌ Optional | ✅ Cryptographic |
 | **Verification** | ✅ Dual approval | ✅ Single | ⚠️ Complex |
 | **Speed** | ✅ Fast | ✅ Very fast | ❌ Slower |
 | **Scalability** | ✅ Cloud-ready | ✅ Scalable | ⚠️ Limited |
